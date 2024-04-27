@@ -1,3 +1,11 @@
+import { SignUpForm } from "@/components/pages/noAuth/signup/form";
+import { SkeletonSignUpForm } from "@/components/pages/noAuth/signup/skeleton/skeletonForm";
+import { Suspense } from "react";
+
 export default function SignUp() {
-  return <h1>Sign Up</h1>;
+  return (
+    <Suspense fallback={<SkeletonSignUpForm />}>
+      <SignUpForm />
+    </Suspense>
+  );
 }

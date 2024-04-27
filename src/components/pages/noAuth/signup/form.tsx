@@ -1,16 +1,17 @@
-"use client";
 import { Button } from "@/components/button/button";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
-export function SignUpForm() {
-  const router = useRouter();
-  async function signIn(form: FormData) {
+export async function SignUpForm() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
+  async function signUp(form: FormData) {
+    "use server";
     await new Promise((resolve) => setTimeout(resolve, 3000));
-    router.push("/dashboard");
+
+    redirect("/dashboard");
   }
 
   return (
-    <form action={signIn}>
+    <form action={signUp} method="POST">
       <input
         type="email"
         name="email"
@@ -23,7 +24,7 @@ export function SignUpForm() {
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
         required
       />
-      <Button>Sign Up</Button>
+      <Button>Sign In</Button>
     </form>
   );
 }

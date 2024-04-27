@@ -1,7 +1,8 @@
 import { Button } from "@/components/button/button";
 import { redirect } from "next/navigation";
 
-export function SignInForm() {
+export async function SignInForm() {
+  await new Promise((resolve) => setTimeout(resolve, 3000));
   async function signIn(form: FormData) {
     "use server";
     await new Promise((resolve) => setTimeout(resolve, 3000));
