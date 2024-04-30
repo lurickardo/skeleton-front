@@ -3,7 +3,7 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/button/button";
-import { type SignInFormType, signInFormSchema } from "@/forms/noAuth/signin";
+import { type SignInFormType, signInFormSchema } from "@/schema/noAuth/signin";
 
 export function SignInForm() {
   const router = useRouter();
