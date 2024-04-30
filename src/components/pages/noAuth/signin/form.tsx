@@ -3,31 +3,20 @@ import { useRouter } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Button } from "@/components/button/button";
-import { z } from "zod";
-
-const signInFormSchema = z.object({
-  email: z
-    .string()
-    .min(1, "Digite um email válido.")
-    .max(256, "Digite um email válido.")
-    .email("Digite um email válido."),
-  password: z.string().min(8),
-});
-
-type SignInForm = z.infer<typeof signInFormSchema>;
+import { type SignInFormType, signInFormSchema } from "@/forms/noAuth/signin";
 
 export function SignInForm() {
+  const router = useRouter();
   const {
     handleSubmit,
     register,
     formState: { errors, isSubmitting },
-  } = useForm<SignInForm>({
+  } = useForm<SignInFormType>({
     mode: "onBlur",
     resolver: zodResolver(signInFormSchema),
   });
-  const router = useRouter();
 
-  const signIn = async ({ email, password }: SignInForm) => {
+  const signIn = async ({ email, password }: SignInFormType) => {
     console.log(email, password);
     await new Promise((resolve) => setTimeout(resolve, 3000));
 
